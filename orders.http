@@ -1,0 +1,32 @@
+GET http://localhost:3000/orders
+
+###
+
+GET http://localhost:3000/orders/3729f50d-edb7-4966-bf7d-d61d5e11dabe
+
+###
+
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+    "amount": 500,
+    "credit_card_name": "RAPHAEL CARREIRO",
+    "credit_card_number": "1234"
+}
+
+###
+
+PATCH http://localhost:3000/orders/3729f50d-edb7-4966-bf7d-d61d5e11dabe
+Content-Type: application/json
+x-api-token: 
+
+{
+    "amount": 500,
+    "credit_card_name": "CAMILA CARREIRO",
+    "credit_card_number": "1234"
+}
+
+###
+
+DELETE http://localhost:3000/orders/81ac52d6-4862-4f13-965f-50b68fa73ab4
