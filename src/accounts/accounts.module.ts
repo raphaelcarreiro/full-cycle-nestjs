@@ -10,5 +10,6 @@ import { TokenGuard } from './token.guard';
   imports: [SequelizeModule.forFeature([Account])],
   controllers: [AccountsController],
   providers: [AccountsService, AccountStorageService, TokenGuard],
+  exports: [AccountStorageService],
 })
 export class AccountsModule {}

@@ -3,9 +3,7 @@ import { AccountStorageService } from './account-storage/account-storage.service
 
 @Injectable()
 export class TokenGuard implements CanActivate {
-  constructor(private accountStorage: AccountStorageService) {
-    //
-  }
+  constructor(private accountStorage: AccountStorageService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
@@ -16,8 +14,8 @@ export class TokenGuard implements CanActivate {
       try {
         await this.accountStorage.setBy(token);
         return true;
-      } catch (e) {
-        console.error(e);
+      } catch (err) {
+        console.error(err);
         return false;
       }
     }

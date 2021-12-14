@@ -1,4 +1,5 @@
 GET http://localhost:3000/orders
+x-token: opcddsrnhkd
 
 ###
 
@@ -8,6 +9,7 @@ GET http://localhost:3000/orders/3729f50d-edb7-4966-bf7d-d61d5e11dabe
 
 POST http://localhost:3000/orders
 Content-Type: application/json
+x-token: opcddsrnhkd
 
 {
     "amount": 500,
@@ -19,7 +21,7 @@ Content-Type: application/json
 
 PATCH http://localhost:3000/orders/3729f50d-edb7-4966-bf7d-d61d5e11dabe
 Content-Type: application/json
-x-api-token: 
+x-token: 
 
 {
     "amount": 500,

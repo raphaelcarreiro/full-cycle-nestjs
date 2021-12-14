@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { EmptyResultError } from 'sequelize';
 import { AccountStorageService } from 'src/accounts/account-storage/account-storage.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
@@ -29,7 +30,13 @@ export class OrdersService {
   }
 
   findOne(id: string) {
-    return this.orderModel.findByPk(id);
+    return this.orderModel.findOne({
+      where: {
+        id,
+        account_id: this.accountStorageService.account.id,
+      },
+      rejectOnEmpty: new EmptyResultError('Account with id or token not found'),
+    });
   }
 
   async update(id: string, updateOrderDto: UpdateOrderDto) {

@@ -2,9 +2,22 @@ GET http://localhost:3000/accounts
 
 ###
 
+GET http://localhost:3000/accounts/85d00f92-d554-4a06-8c61-0112d1494191
+
+###
+
 POST http://localhost:3000/accounts
 Content-Type: application/json
 
 {
     "name": "Conta 1"
+}
+
+###
+
+PATCH http://localhost:3000/accounts/85d00f92-d554-4a06-8c61-0112d1494191
+Content-Type: application/json
+
+{
+    "name": "Conta 2"
 }
