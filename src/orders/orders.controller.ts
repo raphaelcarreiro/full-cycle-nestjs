@@ -3,6 +3,8 @@ import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { TokenGuard } from 'src/accounts/token.guard';
+import { MessagePattern, Payload } from '@nestjs/microservices';
+import { KafkaMessage } from '@nestjs/microservices/external/kafka.interface';
 
 @UseGuards(TokenGuard)
 @Controller('/orders')
@@ -33,5 +35,12 @@ export class OrdersController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.ordersService.remove(id);
+  }
+
+  @MessagePattern('transaction_result')
+  async consumerUpdateStatus(@Payload() message: KafkaMessage) {
+    const payload = message.value as any;
+
+    await this.ordersService.update(payload.id, { status: payload.status });
   }
 }

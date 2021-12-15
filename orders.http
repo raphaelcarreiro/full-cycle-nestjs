@@ -14,7 +14,10 @@ x-token: opcddsrnhkd
 {
     "amount": 500,
     "credit_card_name": "RAPHAEL CARREIRO",
-    "credit_card_number": "1234"
+    "credit_card_number": "1234",
+    "credit_card_expiration_month": 12,
+    "credit_card_expiration_year": 2022,
+    "credit_card_cvv": "123"
 }
 
 ###
